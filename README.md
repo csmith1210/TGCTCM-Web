@@ -28,7 +28,7 @@ This is a web app version of the [TGCTours Card Maker](https://github.com/csmith
 * [**RedBeanPHP**](https://redbeanphp.com/index.php): This project was used to facilitate database management and simulate C# DataTable objects. The project is dual licensed under [New BSD and GPLv2](https://redbeanphp.com/index.php?p=/license).
 ### The Templates:
 ##### Designed by EmeraldPi:
-<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/template.png" width="248" height="125" />
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/template.png" width="271" height="137" />
 <h5>Designed by Pablo:</h5>
 <img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/challenge.png" width="271" height="162" />
 <img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/web.png" width="271" height="162" />
