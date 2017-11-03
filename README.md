@@ -22,9 +22,16 @@ This is a web app version of the [TGCTours Card Maker](https://github.com/csmith
 3. Copy the outputted BBCode to your signature on forums, or use the image URL however you like.
 4. The web app will automatically update your members card with each weeks stats as the TGCTours website is updated.
    * This will actually have a delay due to the cron job execution requirement.
-### The Template:
-![template](https://github.com/csmith1210/TGCT-Card-Maker/raw/master/TGCT%20Card%20Maker/Resources/template.png)
 ### Acknowledgements:
 * [**Coming Sssoon Page by Creative Tim**](https://www.creative-tim.com/product/coming-sssoon-page): This project was used for the welcome page template. The HTML and CSS was heavily modified to suit the project's purposes. The project is licensed under the [MIT license](https://github.com/creativetimofficial/coming-sssoon-page/blob/master/LICENSE.md).
 * [**Responsive Form Widget Template by W3layouts**](https://w3layouts.com/different-multiple-form-widget-flat-responsive-widget-template/): This project was used for its form layout (textbox and dropdown) for the welcome page template. The HTML and CSS was heavily modified to suit the projects purposes. The project is licensed under the [Creative Commons Attribution 3.0](http://creativecommons.org/licenses/by/3.0/).
 * [**RedBeanPHP**](https://redbeanphp.com/index.php): This project was used to facilitate database management and simulate C# DataTable objects. The project is dual licensed under [New BSD and GPLv2](https://redbeanphp.com/index.php?p=/license).
+### The Templates:
+##### Designed by EmeraldPi:
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/template.png" width="248" height="125" />
+<h5>Designed by Pablo:</h5>
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/challenge.png" width="271" height="162" />
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/web.png" width="271" height="162" />
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/euro.png" width="271" height="162" />
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/pga.png" width="271" height="162" />
+<img src="https://raw.githubusercontent.com/csmith1210/TGCTCM-Web/master/resources/pablo-templates/world.png" width="271" height="162" />
