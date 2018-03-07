@@ -97,6 +97,7 @@ function scrape_info() {
             if (preg_replace('/\s+/', '', $item->childNodes->item(4)->nodeValue) == 'DidNotPlay')
                 continue; //if a row says the player did not play, skip it
             $round = R::dispense('round'); //create a new row in the database table 'round'
+            $round['player'] = $playerId;
             $date = date_create_from_format("n/d/Y H:i:s","{$item->childNodes->item(0)->nodeValue} 00:00:00"); //get the date column as datetime object
             $week = 1 + (($seasonStart->diff($date)->days) / 7); //calculate which week the tournament is from the season start date
             $round['date'] = $date; // set the row's date value
@@ -111,7 +112,15 @@ function scrape_info() {
             else
                 $round['place'] = $item->childNodes->item(4)->nodeValue; //set the tournament place for the row
             $tourn = trim($item->childNodes->item(2)->nodeValue); //save the tournament name to the row
-            $url = $xpath->query("//table[@id='results']/tbody/tr/td/a[text()=\"$tourn\"]/@href");
+            $tourn_words = explode(' ',trim($item->childNodes->item(2)->nodeValue));
+            foreach($tourn_words as $tourn_word) {
+                if (strpos($tourn_word, '"') !== false or strpos($tourn_word, "'") !== false) {
+                    $tourn = $tourn_word;
+                    $tourn = str_replace(array("'", "\"", "&quot;"), "", $tourn);
+                    break;
+                }
+            }
+            $url = $xpath->query("//table[@id='results']/tbody/tr/td/a[contains(text(),'$tourn')]/@href");
             $round['tournID'] = explode('/', $url->item(0)->nodeValue)[3]; //get the tournament ID fot the row using the name
             if (strpos($item->childNodes->item(4)->nodeValue,"WD") !== false || $item->childNodes->item(10)->nodeValue == "--")
                 $cutsMissed++; //if the player was withdrawn, or the 3rd round scores show as --, add 1 to the cutsMissed tracker
@@ -120,7 +129,9 @@ function scrape_info() {
             R::store($round); //save the row in the database
         }
     }
-    $rounds = R::findall('round','ORDER BY date DESC'); //get all tournaments from every tour and order by descending date
+    $query = "SELECT * FROM round WHERE player = $playerId ORDER BY date DESC";
+    $rounds = R::getAll($query); //get all tournaments from every tour and order by descending date
+    $rounds = R::convertToBeans( 'round', $rounds );
     $rounds = array_values($rounds); //reorder the id numbers of the array with the new date order
     $NumEvents = count($rounds); //count the number of tournaments in the table for the number of events
     $cutPercent = round((($cutsMade / ($cutsMade + $cutsMissed)) * 100), 2); //calculate cutPercent using the two trackers
@@ -299,5 +310,6 @@ $fp = fopen($file, 'rb'); //open the file
 header('Content-type: image/png'); //set the HTML header for an image object
 header("Content-Length: " . filesize($file)); //set teh HTML header's length for the image size
 fpassthru($fp); //send the content to the browser
-R::wipe('round'); //delete all tournament rows created in the 'round' table during script execution
+R::exec("DELETE FROM round WHERE player = $playerId");
+//R::wipe('round'); //delete all tournament rows created in the 'round' table during script execution
 R::close(); //close the database connection
